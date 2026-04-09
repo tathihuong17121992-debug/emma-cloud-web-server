@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Contacts</title>
+<link rel="stylesheet" href="contacts.css">
+</head>
+
+<body>
+
+<h1>Phone List</h1>
+
+<table border="1" id="contactsTable">
+<tr>
+<th>Name</th>
+<th>Phone Number</th>
+</tr>
+</table>
+
+<script>
+
+fetch("/cgi-bin/contacts-json.py")
+.then(response => response.json())
+.then(data => {
+
+    let table = document.getElementById("contactsTable");
+
+    data.data.forEach(contact => {
+
+        let row = table.insertRow();
+
+        let nameCell = row.insertCell(0);
+        let phoneCell = row.insertCell(1);
+
+        nameCell.innerHTML = contact.name;
+        phoneCell.innerHTML = contact.telephone;
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
