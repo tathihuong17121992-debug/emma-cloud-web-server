@@ -41,7 +41,7 @@ print("""
 """)
 
 for row in rows:
-    name, phone, email, address, note = row
+    name, phone, email, address = row
     print(f"""
         <tr>
             <td>{name}</td>
