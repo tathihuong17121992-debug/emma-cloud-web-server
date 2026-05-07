@@ -11,7 +11,7 @@ conn = pymysql.connect(
 )
 
 cursor = conn.cursor()
-cursor.execute("SELECT name, phone, email, address FROM contacts")
+cursor.execute("SELECT name, phone, email, address, age FROM contacts")
 rows = cursor.fetchall()
 
 # ===== PHẦN HIỂN THỊ (mới) =====
@@ -38,16 +38,18 @@ print("""
             <th>Phone</th>
             <th>Email</th>
             <th>Address</th>
+            <th>Age</th>
 """)
 
 for row in rows:
-    name, phone, email, address = row
+    name, phone, email, address, age = row
     print(f"""
         <tr>
             <td>{name}</td>
             <td>{phone}</td>
             <td>{email}</td>
             <td>{address}</td>
+            <td>{age}</td>
         </tr>
     """)
 
